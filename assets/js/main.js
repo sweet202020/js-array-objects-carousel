@@ -34,3 +34,66 @@ const images = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
 ];
+
+//Milestone 1:
+//Ora rimuoviamo i contenuti statici e usiamo l’array di oggetti letterali per popolare dinamicamente il carosello.
+//Al click dell'utente sulle frecce verso sinistra o destra, l'immagine attiva diventerà visibile e dovremo aggiungervi titolo e testo.
+
+//seleziono l'elemento della dom per inserire le mie immagini
+const sliderEl=document.querySelector('.slider')
+let activeImage=0
+    images.forEach((image, i)=>{
+       const imageEl= `
+       <img class="${i===activeImage ? 'active' : ''}"  src="./assets/${image.image}" alt="">
+       <h3 class="${i===activeImage ? 'active' : ''}"> ${image.title}</h3>
+       <p class="${i===activeImage ? 'active' : ''}"> ${image.text}</p>`
+        sliderEl.insertAdjacentHTML('beforeend', imageEl)
+    })
+    
+
+    
+    
+    //utilizzo event listener per il click del bottone
+     const nextEl=document.querySelector('.next');
+     nextEl.addEventListener('click', function(){
+        //seleziono l'elemento con la classe active
+        const allImg=document.querySelectorAll('img')
+        console.log(allImg)
+        const allH3=document.querySelectorAll('h3')
+        const allP=document.querySelectorAll('p')
+        /* const activeEl= allImg[activeImage]
+        console.log(activeEl) */
+        //rimuovo l'elemento active
+        allImg[activeImage].classList.remove('active') 
+        allH3[activeImage].classList.remove('active') 
+        allP[activeImage].classList.remove('active') 
+        //incremento l'activeImage di 1
+        activeImage++ 
+        //aggiungo la classe active
+        allImg[activeImage].classList.add('active')
+        allH3[activeImage].classList.add('active')
+        allP[activeImage].classList.add('active')
+         
+     })
+      //utilizzo event listener per il click del bottone
+      const prevEl=document.querySelector('.prev');
+      prevEl.addEventListener('click', function(){
+         //seleziono l'elemento con la classe active
+        const allImg=document.querySelectorAll('img')
+        console.log(allImg)
+        const allH3=document.querySelectorAll('h3')
+        const allP=document.querySelectorAll('p')
+        /* const activeEl= allImg[activeImage]
+        console.log(activeEl) */
+        //rimuovo l'elemento active
+        allImg[activeImage].classList.remove('active') 
+        allH3[activeImage].classList.remove('active') 
+        allP[activeImage].classList.remove('active') 
+        //incremento l'activeImage di 1
+        activeImage-- 
+        //aggiungo la classe active
+        allImg[activeImage].classList.add('active')
+        allH3[activeImage].classList.add('active')
+        allP[activeImage].classList.add('active')
+          
+      })

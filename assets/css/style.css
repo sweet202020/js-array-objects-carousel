@@ -12,7 +12,7 @@ img{
 img.active{
     display: block;
 }
-img:not(.active){
+img:not(.active),h3:not(.active), p:not(.active){
     display: none;
 }
 .prev{
