@@ -1,0 +1,25 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img{
+    max-width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}
+img.active{
+    display: block;
+}
+img:not(.active){
+    display: none;
+}
+.prev{
+    position: absolute;
+    top: 50px;
+}
+.next{
+    position: absolute;
+    bottom: 30px;
+}
