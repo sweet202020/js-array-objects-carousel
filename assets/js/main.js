@@ -45,8 +45,8 @@ let activeImage=0
     images.forEach((image, i)=>{
        const imageEl= `
        <img class="${i===activeImage ? 'active' : ''}"  src="./assets/${image.image}" alt="">
-       <h3 class="${i===activeImage ? 'active' : ''}"> ${image.title}</h3>
-       <p class="${i===activeImage ? 'active' : ''}"> ${image.text}</p>`
+       <h3 class="${i===activeImage ? 'active text-center' : ''}"> ${image.title}</h3>
+       <p class="${i===activeImage ? 'active text-center' : ''}"> ${image.text}</p>`
         sliderEl.insertAdjacentHTML('beforeend', imageEl)
     })
     
@@ -69,12 +69,16 @@ let activeImage=0
         allP[activeImage].classList.remove('active') 
         //incremento l'activeImage di 1
         activeImage++ 
+        if (activeImage > images.length -1 ){
+          activeImage=0
+       } 
         //aggiungo la classe active
         allImg[activeImage].classList.add('active')
-        allH3[activeImage].classList.add('active')
-        allP[activeImage].classList.add('active')
-         
-     })
+        allH3[activeImage].classList.add('active', 'text-center')
+        allP[activeImage].classList.add('active', 'text-center')
+
+        
+    })
       //utilizzo event listener per il click del bottone
       const prevEl=document.querySelector('.prev');
       prevEl.addEventListener('click', function(){
@@ -91,9 +95,15 @@ let activeImage=0
         allP[activeImage].classList.remove('active') 
         //incremento l'activeImage di 1
         activeImage-- 
+        if (activeImage === images.length-(images.length+1) ){
+            activeImage=4
+         } 
         //aggiungo la classe active
         allImg[activeImage].classList.add('active')
-        allH3[activeImage].classList.add('active')
-        allP[activeImage].classList.add('active')
+        allH3[activeImage].classList.add('active', 'text-center')
+        allP[activeImage].classList.add('active', 'text-center')
           
       })
+
+/* 
+      console.log(images.length+1) */
