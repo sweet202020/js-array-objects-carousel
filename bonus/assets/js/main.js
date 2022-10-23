@@ -55,7 +55,7 @@ let activeImage=0
     
     //utilizzo event listener per il click del bottone
      const nextEl=document.querySelector('.next');
-     nextEl.addEventListener('click', function(){
+     nextEl.addEventListener('click', function (){
         //seleziono l'elemento con la classe active
         const allImg=document.querySelectorAll('img')
         console.log(allImg)
@@ -160,8 +160,40 @@ for (let i = 0; i < allImgTumb.length; i++) {
 /*
 BONUS 2  (opzionale):
 Aggiungere funzionalità di autoplay: dopo un certo periodo di tempo (3 secondi) l’immagine attiva dovrà cambiare alla successiva.
-BONUS 3  (opzionale):
-Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay. */
+*/
+
+const autoplay = setInterval(() => {
+    
+    const allSliderImg=document.querySelectorAll('.slider img')
+    const allTumbImg= document.querySelectorAll('.tumbnails img') 
+        console.log(allSliderImg)
+        const allH3=document.querySelectorAll('h3')
+        const allP=document.querySelectorAll('p')
+        /* const activeEl= allSliderImg[activeImage]
+        console.log(activeEl) */
+        //rimuovo l'elemento active
+        allSliderImg[activeImage].classList.remove('active')
+        allTumbImg[selectImage].classList.remove('select') 
+        allH3[activeImage].classList.remove('active') 
+        allP[activeImage].classList.remove('active') 
+        //incremento l'activeImage di 1
+        activeImage++ 
+        selectImage++
+        if (activeImage > images.length -1 ){
+          activeImage=0
+          
+       } 
+        //aggiungo la classe active
+        allSliderImg[activeImage].classList.add('active')
+        allTumbImg[selectImage].classList.add('select') 
+        allH3[activeImage].classList.add('active', 'text-center')
+        allP[activeImage].classList.add('active', 'text-center')
+
+}, 3000);
+
+
+/* BONUS 3  (opzionale):
+Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay.  */
 
 
 
