@@ -162,39 +162,84 @@ BONUS 2  (opzionale):
 Aggiungere funzionalità di autoplay: dopo un certo periodo di tempo (3 secondi) l’immagine attiva dovrà cambiare alla successiva.
 */
 
-const autoplay = setInterval(() => {
-    
-    const allSliderImg=document.querySelectorAll('.slider img')
-    const allTumbImg= document.querySelectorAll('.tumbnails img') 
-        console.log(allSliderImg)
-        const allH3=document.querySelectorAll('h3')
-        const allP=document.querySelectorAll('p')
-        /* const activeEl= allSliderImg[activeImage]
-        console.log(activeEl) */
-        //rimuovo l'elemento active
-        allSliderImg[activeImage].classList.remove('active')
-        allTumbImg[selectImage].classList.remove('select') 
-        allH3[activeImage].classList.remove('active') 
-        allP[activeImage].classList.remove('active') 
-        //incremento l'activeImage di 1
-        activeImage++ 
-        selectImage++
-        if (activeImage > images.length -1 ){
-          activeImage=0
-          
-       } 
-        //aggiungo la classe active
-        allSliderImg[activeImage].classList.add('active')
-        allTumbImg[selectImage].classList.add('select') 
-        allH3[activeImage].classList.add('active', 'text-center')
-        allP[activeImage].classList.add('active', 'text-center')
 
-}, 3000);
 
 
 /* BONUS 3  (opzionale):
 Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay.  */
-
+const startButtonEl=document.querySelector('.start')
+startButtonEl.addEventListener('click', function(){
+    const autoplay = setInterval(() => {
+    
+        const allSliderImg=document.querySelectorAll('.slider img')
+        const allTumbImg= document.querySelectorAll('.tumbnails img') 
+            console.log(allSliderImg)
+            const allH3=document.querySelectorAll('h3')
+            const allP=document.querySelectorAll('p')
+            /* const activeEl= allSliderImg[activeImage]
+            console.log(activeEl) */
+            //rimuovo l'elemento active
+            allSliderImg[activeImage].classList.remove('active')
+            allTumbImg[selectImage].classList.remove('select') 
+            allH3[activeImage].classList.remove('active') 
+            allP[activeImage].classList.remove('active') 
+            //incremento l'activeImage di 1
+            activeImage++ 
+            selectImage++
+            if (activeImage > images.length -1 ){
+              activeImage=0
+              selectImage=0
+              
+           } 
+            //aggiungo la classe active
+            allSliderImg[activeImage].classList.add('active')
+            allTumbImg[selectImage].classList.add('select') 
+            allH3[activeImage].classList.add('active', 'text-center')
+            allP[activeImage].classList.add('active', 'text-center')
+    
+    }, 3000);
+    const stopButtonEl=document.querySelector('.stop')
+    stopButtonEl.addEventListener('click', function(){
+        clearInterval(autoplay)
+    
+    })
+})
+const invertButtonEl=document.querySelector('.invert')
+invertButtonEl.addEventListener('click', function(){
+    const invertPlay = setInterval(() => {
+    
+        const allSliderImg=document.querySelectorAll('.slider img')
+        const allTumbImg= document.querySelectorAll('.tumbnails img') 
+            console.log(allSliderImg)
+            const allH3=document.querySelectorAll('h3')
+            const allP=document.querySelectorAll('p')
+            /* const activeEl= allSliderImg[activeImage]
+            console.log(activeEl) */
+            //rimuovo l'elemento active
+            allSliderImg[activeImage].classList.remove('active')
+            allTumbImg[selectImage].classList.remove('select') 
+            allH3[activeImage].classList.remove('active') 
+            allP[activeImage].classList.remove('active') 
+            //incremento l'activeImage di 1
+            activeImage--
+            selectImage--
+            if (activeImage === images.length-(images.length+1) ){
+                activeImage=images.length-1
+                selectImage=images.length-1
+             } 
+            //aggiungo la classe active
+            allSliderImg[activeImage].classList.add('active')
+            allTumbImg[selectImage].classList.add('select') 
+            allH3[activeImage].classList.add('active', 'text-center')
+            allP[activeImage].classList.add('active', 'text-center')
+    
+    }, 3000);
+    const stopButtonEl=document.querySelector('.stop')
+    stopButtonEl.addEventListener('click', function(){
+        clearInterval(invertPlay)
+    
+    })
+})
 
 
 

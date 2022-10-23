@@ -46,3 +46,18 @@ img{
     opacity: 50%;
     display: block;
 }
+
+.start_and_stop{
+    margin-top: 5rem;
+}
+.start_and_stop button{
+    height: 40px;
+    aspect-ratio: 1/1;
+    background-color: white;
+    border-radius: 50%;
+    
+
+}
+.tumbnails img:hover{
+    opacity: 100%;
+}
